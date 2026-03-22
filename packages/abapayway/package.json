@@ -1,0 +1,25 @@
+{
+  "name": "@baraypay/abapayway",
+  "version": "0.1.0",
+  "description": "ABA PayWay provider adapter for BarayPay",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@baraypay/sdk": "0.1.0"
+  }
+}

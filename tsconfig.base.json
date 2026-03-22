@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "baraypay": ["packages/baraypay/src/index.ts"],
+      "@baraypay/sdk": ["packages/sdk/src/index.ts"],
+      "@baraypay/abapayway": ["packages/abapayway/src/index.ts"],
+      "@baraypay/bakong": ["packages/bakong/src/index.ts"]
+    }
+  }
+}

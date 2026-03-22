@@ -1,0 +1,35 @@
+{
+  "name": "baraypay",
+  "version": "0.1.0",
+  "description": "Unified Cambodian payments SDK for Node.js and TypeScript",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./abapayway": {
+      "import": "./dist/abapayway.js",
+      "types": "./dist/abapayway.d.ts"
+    },
+    "./bakong": {
+      "import": "./dist/bakong.js",
+      "types": "./dist/bakong.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@baraypay/sdk": "0.1.0",
+    "@baraypay/abapayway": "0.1.0",
+    "@baraypay/bakong": "0.1.0"
+  }
+}

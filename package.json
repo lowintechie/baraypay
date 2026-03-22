@@ -1,0 +1,19 @@
+{
+  "name": "baraypay-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BarayPay monorepo for unified Cambodian payments SDK",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf packages/*/dist node_modules package-lock.json",
+    "test": "npm run build && node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
