@@ -3,7 +3,7 @@ import type {
   VerificationResult,
   WebhookEvent,
   PaymentStatus
-} from "@baraypay/sdk";
+} from "@rielpay/sdk";
 import type { AbaCreatePaymentResponse } from "./types.js";
 
 export function mapCreatePaymentToAbaPayload(input: CreatePaymentInput, merchantId: string) {

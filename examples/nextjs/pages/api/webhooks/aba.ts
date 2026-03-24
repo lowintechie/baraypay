@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import getRawBody from "raw-body";
-import { createBarayPay, abaPayway } from "baraypay";
+import { createRielPay, abaPayway } from "rielpay";
 
 export const config = {
   api: {
@@ -8,7 +8,7 @@ export const config = {
   }
 };
 
-const baraypay = createBarayPay({
+const rielpay = createRielPay({
   providers: [
     abaPayway({
       merchantId: process.env.ABA_MERCHANT_ID || "merchant_demo",
@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const rawBody = await getRawBody(req);
-    const event = await baraypay.webhookHandler({
+    const event = await rielpay.webhookHandler({
       provider: "aba",
       headers: req.headers,
       rawBody

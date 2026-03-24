@@ -1,7 +1,7 @@
 {
-  "name": "@baraypay/bakong",
+  "name": "@rielpay/bakong",
   "version": "0.1.0",
-  "description": "Bakong KHQR provider adapter for BarayPay",
+  "description": "Bakong KHQR provider adapter for RielPay",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
@@ -20,6 +20,6 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@baraypay/sdk": "0.1.0"
+    "@rielpay/sdk": "0.1.0"
   }
 }

@@ -1,4 +1,4 @@
-import { BarayPayError } from "./errors.js";
+import { RielPayError } from "./errors.js";
 import type { GenerateKHQRInput, PaymentStatus, ProviderAdapter } from "./index.js";
 
 export interface BakongConfig {
@@ -62,7 +62,7 @@ function buildKHQRString(input: GenerateKHQRInput, config: BakongConfig): string
     "62",
     [
       tlv("01", input.billNumber ?? ""),
-      tlv("05", input.storeLabel ?? "BarayPay")
+      tlv("05", input.storeLabel ?? "RielPay")
     ].join("")
   );
 
@@ -106,11 +106,11 @@ export function bakongKHQR(config: BakongConfig): ProviderAdapter {
         currency: input.currency,
         merchantName: config.merchantName,
         billNumber: input.orderId,
-        storeLabel: "BarayPay"
+        storeLabel: "RielPay"
       });
 
       if (!qr) {
-        throw new BarayPayError("Bakong KHQR generation failed", "KHQR_GENERATION_FAILED", "bakong");
+        throw new RielPayError("Bakong KHQR generation failed", "KHQR_GENERATION_FAILED", "bakong");
       }
 
       return {
@@ -138,7 +138,7 @@ export function bakongKHQR(config: BakongConfig): ProviderAdapter {
       try {
         payload = JSON.parse(input.rawBody.toString("utf8"));
       } catch (error) {
-        throw new BarayPayError("Invalid Bakong webhook JSON body", "INVALID_WEBHOOK_BODY", "bakong", error);
+        throw new RielPayError("Invalid Bakong webhook JSON body", "INVALID_WEBHOOK_BODY", "bakong", error);
       }
 
       const status = normalizeBakongStatus(payload.status);

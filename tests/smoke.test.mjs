@@ -1,10 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { createBarayPay, abaPayway, bakongKHQR } from "../packages/baraypay/dist/index.js";
+import { createRielPay, abaPayway, bakongKHQR } from "../packages/rielpay/dist/index.js";
 
 test("createPayment via ABA provider in mock mode", async () => {
-  const client = createBarayPay({
+  const client = createRielPay({
     providers: [
       abaPayway({
         merchantId: "m_123",
@@ -28,7 +28,7 @@ test("createPayment via ABA provider in mock mode", async () => {
 });
 
 test("generateKHQR via Bakong provider", async () => {
-  const client = createBarayPay({
+  const client = createRielPay({
     providers: [
       bakongKHQR({
         merchantId: "bk_merchant",

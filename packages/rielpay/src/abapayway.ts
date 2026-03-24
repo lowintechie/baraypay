@@ -1,5 +1,5 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { BarayPayError } from "./errors.js";
+import { RielPayError } from "./errors.js";
 import { jsonRequest } from "./http.js";
 import type {
   CreatePaymentInput,
@@ -194,12 +194,12 @@ export function abaPayway(config: AbaPaywayConfig): ProviderAdapter {
 
       if (config.webhookSecret) {
         if (!signature) {
-          throw new BarayPayError("Missing ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
+          throw new RielPayError("Missing ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
         }
 
         const computed = hmacSHA256Hex(config.webhookSecret, input.rawBody);
         if (!safeCompareHex(computed, signature)) {
-          throw new BarayPayError("Invalid ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
+          throw new RielPayError("Invalid ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
         }
       }
 
@@ -207,7 +207,7 @@ export function abaPayway(config: AbaPaywayConfig): ProviderAdapter {
       try {
         payload = JSON.parse(input.rawBody.toString("utf8"));
       } catch (error) {
-        throw new BarayPayError("Invalid ABA webhook JSON body", "INVALID_WEBHOOK_BODY", "aba", error);
+        throw new RielPayError("Invalid ABA webhook JSON body", "INVALID_WEBHOOK_BODY", "aba", error);
       }
 
       return mapAbaWebhook(payload);

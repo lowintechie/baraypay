@@ -1,8 +1,8 @@
 {
-  "name": "baraypay-workspace",
+  "name": "rielpay-workspace",
   "version": "0.1.0",
   "private": true,
-  "description": "BarayPay monorepo for unified Cambodian payments SDK",
+  "description": "RielPay monorepo for unified Cambodian payments SDK",
   "license": "MIT",
   "workspaces": [
     "packages/*"

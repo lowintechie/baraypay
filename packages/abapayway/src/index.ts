@@ -1,5 +1,5 @@
-import type { ProviderAdapter } from "@baraypay/sdk";
-import { BarayPayError, jsonRequest } from "@baraypay/sdk";
+import type { ProviderAdapter } from "@rielpay/sdk";
+import { RielPayError, jsonRequest } from "@rielpay/sdk";
 import { mapAbaCreateResponse, mapAbaVerifyResponse, mapAbaWebhook, mapCreatePaymentToAbaPayload } from "./mapper.js";
 import { hmacSHA256Hex, safeCompareHex } from "./signer.js";
 import type { AbaPaywayConfig } from "./types.js";
@@ -90,12 +90,12 @@ export function abaPayway(config: AbaPaywayConfig): ProviderAdapter {
 
       if (config.webhookSecret) {
         if (!signature) {
-          throw new BarayPayError("Missing ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
+          throw new RielPayError("Missing ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
         }
 
         const computed = hmacSHA256Hex(config.webhookSecret, input.rawBody);
         if (!safeCompareHex(computed, signature)) {
-          throw new BarayPayError("Invalid ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
+          throw new RielPayError("Invalid ABA webhook signature", "INVALID_WEBHOOK_SIGNATURE", "aba");
         }
       }
 
@@ -103,7 +103,7 @@ export function abaPayway(config: AbaPaywayConfig): ProviderAdapter {
       try {
         payload = JSON.parse(input.rawBody.toString("utf8"));
       } catch (error) {
-        throw new BarayPayError("Invalid ABA webhook JSON body", "INVALID_WEBHOOK_BODY", "aba", error);
+        throw new RielPayError("Invalid ABA webhook JSON body", "INVALID_WEBHOOK_BODY", "aba", error);
       }
 
       return mapAbaWebhook(payload);

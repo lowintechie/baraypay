@@ -1,9 +1,17 @@
 {
   "files": [],
   "references": [
-    { "path": "./packages/sdk" },
-    { "path": "./packages/abapayway" },
-    { "path": "./packages/bakong" },
-    { "path": "./packages/baraypay" }
+    {
+      "path": "./packages/sdk"
+    },
+    {
+      "path": "./packages/abapayway"
+    },
+    {
+      "path": "./packages/bakong"
+    },
+    {
+      "path": "./packages/rielpay"
+    }
   ]
 }

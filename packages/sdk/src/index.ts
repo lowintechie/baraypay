@@ -1,4 +1,4 @@
-export * from "./createBarayPay.js";
+export * from "./createRielPay.js";
 export * from "./errors.js";
 export * from "./provider.js";
 export * from "./types.js";

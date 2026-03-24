@@ -1,9 +1,9 @@
 import express from "express";
-import { createBarayPay, abaPayway, bakongKHQR } from "baraypay";
+import { createRielPay, abaPayway, bakongKHQR } from "rielpay";
 
 const app = express();
 
-const baraypay = createBarayPay({
+const rielpay = createRielPay({
   providers: [
     abaPayway({
       merchantId: process.env.ABA_MERCHANT_ID || "merchant_demo",
@@ -14,7 +14,7 @@ const baraypay = createBarayPay({
     }),
     bakongKHQR({
       merchantId: process.env.BAKONG_MERCHANT_ID || "bakong_demo",
-      merchantName: "BarayPay Express Shop"
+      merchantName: "RielPay Express Shop"
     })
   ]
 });
@@ -22,23 +22,23 @@ const baraypay = createBarayPay({
 app.use(express.json());
 
 app.post("/pay/aba", async (req, res) => {
-  const payment = await baraypay.createPayment({
+  const payment = await rielpay.createPayment({
     provider: "aba",
     amount: Number(req.body.amount ?? 10),
     currency: String(req.body.currency ?? "USD"),
     orderId: String(req.body.orderId ?? `order_${Date.now()}`),
-    description: "BarayPay Express demo payment"
+    description: "RielPay Express demo payment"
   });
 
   res.json(payment);
 });
 
 app.post("/pay/bakong/khqr", async (req, res) => {
-  const qr = await baraypay.generateKHQR({
+  const qr = await rielpay.generateKHQR({
     provider: "bakong",
     amount: Number(req.body.amount ?? 40000),
     currency: String(req.body.currency ?? "KHR"),
-    merchantName: "BarayPay Express Shop",
+    merchantName: "RielPay Express Shop",
     billNumber: String(req.body.billNumber ?? `bill_${Date.now()}`)
   });
 
@@ -47,7 +47,7 @@ app.post("/pay/bakong/khqr", async (req, res) => {
 
 app.post("/webhooks/aba", express.raw({ type: "*/*" }), async (req, res) => {
   try {
-    const event = await baraypay.webhookHandler({
+    const event = await rielpay.webhookHandler({
       provider: "aba",
       headers: req.headers,
       rawBody: req.body as Buffer
@@ -60,5 +60,5 @@ app.post("/webhooks/aba", express.raw({ type: "*/*" }), async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("BarayPay Express demo running at http://localhost:3000");
+  console.log("RielPay Express demo running at http://localhost:3000");
 });

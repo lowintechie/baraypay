@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createBarayPay, abaPayway } from "baraypay";
+import { createRielPay, abaPayway } from "rielpay";
 
-const baraypay = createBarayPay({
+const rielpay = createRielPay({
   providers: [
     abaPayway({
       merchantId: process.env.ABA_MERCHANT_ID || "merchant_demo",
@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  const payment = await baraypay.createPayment({
+  const payment = await rielpay.createPayment({
     provider: "aba",
     amount: Number(req.body.amount ?? 10),
     currency: String(req.body.currency ?? "USD"),

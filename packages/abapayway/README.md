@@ -1,12 +1,12 @@
-# @baraypay/abapayway
+# @rielpay/abapayway
 
-ABA PayWay provider adapter for BarayPay.
+ABA PayWay provider adapter for RielPay.
 
 ```ts
-import { createBarayPay } from "@baraypay/sdk";
-import { abaPayway } from "@baraypay/abapayway";
+import { createRielPay } from "@rielpay/sdk";
+import { abaPayway } from "@rielpay/abapayway";
 
-const baraypay = createBarayPay({
+const rielpay = createRielPay({
   providers: [
     abaPayway({
       merchantId: "merchant_xxx",

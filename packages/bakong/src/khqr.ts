@@ -1,4 +1,4 @@
-import type { GenerateKHQRInput } from "@baraypay/sdk";
+import type { GenerateKHQRInput } from "@rielpay/sdk";
 import type { BakongConfig } from "./types.js";
 
 function tlv(id: string, value: string): string {
@@ -45,7 +45,7 @@ export function buildKHQRString(input: GenerateKHQRInput, config: BakongConfig):
     "62",
     [
       tlv("01", input.billNumber ?? ""),
-      tlv("05", input.storeLabel ?? "BarayPay")
+      tlv("05", input.storeLabel ?? "RielPay")
     ].join("")
   );
 

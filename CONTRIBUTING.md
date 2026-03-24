@@ -1,6 +1,6 @@
-# Contributing to baraypay
+# Contributing to rielpay
 
-Thanks for contributing to baraypay. We welcome fixes, features, docs improvements, and new provider adapters.
+Thanks for contributing to rielpay. We welcome fixes, features, docs improvements, and new provider adapters.
 
 ## Prerequisites
 
@@ -11,8 +11,8 @@ Thanks for contributing to baraypay. We welcome fixes, features, docs improvemen
 ## Local Setup
 
 ```bash
-git clone git@github.com:lowintechie/baraypay.git
-cd baraypay
+git clone git@github.com:lowintechie/rielpay.git
+cd rielpay
 npm install
 npm run build
 npm test
@@ -23,7 +23,7 @@ npm test
 - `packages/sdk`: core unified API and shared types
 - `packages/abapayway`: ABA PayWay provider adapter
 - `packages/bakong`: Bakong KHQR provider adapter
-- `packages/baraypay`: all-in-one public package
+- main all-in-one public package (`name: rielpay`)
 - `examples/*`: integration examples (Express, Next.js)
 - `tests/*`: smoke tests
 
@@ -47,8 +47,8 @@ npm test
 When adding a new payment provider:
 
 1. Create a new package under `packages/<provider-name>`.
-2. Implement the `ProviderAdapter` contract from `@baraypay/sdk`.
-3. Normalize statuses to baraypay unified statuses.
+2. Implement the `ProviderAdapter` contract from `@rielpay/sdk`.
+3. Normalize statuses to rielpay unified statuses.
 4. Add docs and usage examples.
 5. Add smoke tests for create/verify/webhook flows (or equivalent supported features).
 

@@ -11,13 +11,23 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "baseUrl": ".",
     "paths": {
-      "baraypay": ["packages/baraypay/src/index.ts"],
-      "@baraypay/sdk": ["packages/sdk/src/index.ts"],
-      "@baraypay/abapayway": ["packages/abapayway/src/index.ts"],
-      "@baraypay/bakong": ["packages/bakong/src/index.ts"]
+      "rielpay": [
+        "packages/rielpay/src/index.ts"
+      ],
+      "@rielpay/sdk": [
+        "packages/sdk/src/index.ts"
+      ],
+      "@rielpay/abapayway": [
+        "packages/abapayway/src/index.ts"
+      ],
+      "@rielpay/bakong": [
+        "packages/bakong/src/index.ts"
+      ]
     }
   }
 }

@@ -1,14 +1,14 @@
-# BarayPay Architecture
+# RielPay Architecture
 
 ## Core Design
 
 - Core package defines provider contract and normalized types.
-- Provider packages map provider-native payloads into BarayPay unified models.
+- Provider packages map provider-native payloads into RielPay unified models.
 - Client dispatches method calls to provider adapters by `provider` key.
 
 ## Provider Lifecycle
 
-1. Developer registers providers with `createBarayPay`.
+1. Developer registers providers with `createRielPay`.
 2. Unified methods route to provider adapter.
 3. Adapter performs signing/http/parsing.
 4. Adapter returns normalized output.

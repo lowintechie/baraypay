@@ -1,4 +1,4 @@
-import { BarayPayError } from "./errors.js";
+import { RielPayError } from "./errors.js";
 import type { ProviderAdapter } from "./provider.js";
 import type {
   CreatePaymentInput,
@@ -7,11 +7,11 @@ import type {
   WebhookInput
 } from "./types.js";
 
-export interface BarayPayConfig {
+export interface RielPayConfig {
   providers: ProviderAdapter[];
 }
 
-export interface BarayPayClient {
+export interface RielPayClient {
   listProviders(): string[];
   createPayment(input: CreatePaymentInput): ReturnType<NonNullable<ProviderAdapter["createPayment"]>>;
   verifyPayment(input: VerifyPaymentInput): ReturnType<NonNullable<ProviderAdapter["verifyPayment"]>>;
@@ -19,12 +19,12 @@ export interface BarayPayClient {
   webhookHandler(input: WebhookInput): ReturnType<NonNullable<ProviderAdapter["webhookHandler"]>>;
 }
 
-export function createBarayPay(config: BarayPayConfig): BarayPayClient {
+export function createRielPay(config: RielPayConfig): RielPayClient {
   const registry = new Map<string, ProviderAdapter>();
 
   for (const provider of config.providers) {
     if (registry.has(provider.id)) {
-      throw new BarayPayError(
+      throw new RielPayError(
         `Duplicate provider id '${provider.id}'`,
         "DUPLICATE_PROVIDER",
         provider.id
@@ -36,7 +36,7 @@ export function createBarayPay(config: BarayPayConfig): BarayPayClient {
   const getProvider = (id: string): ProviderAdapter => {
     const provider = registry.get(id);
     if (!provider) {
-      throw new BarayPayError(`Provider '${id}' is not registered`, "PROVIDER_NOT_FOUND", id);
+      throw new RielPayError(`Provider '${id}' is not registered`, "PROVIDER_NOT_FOUND", id);
     }
     return provider;
   };
@@ -49,7 +49,7 @@ export function createBarayPay(config: BarayPayConfig): BarayPayClient {
     async createPayment(input) {
       const provider = getProvider(input.provider);
       if (!provider.createPayment) {
-        throw new BarayPayError(
+        throw new RielPayError(
           `Provider '${input.provider}' does not support createPayment`,
           "METHOD_NOT_SUPPORTED",
           input.provider
@@ -61,7 +61,7 @@ export function createBarayPay(config: BarayPayConfig): BarayPayClient {
     async verifyPayment(input) {
       const provider = getProvider(input.provider);
       if (!provider.verifyPayment) {
-        throw new BarayPayError(
+        throw new RielPayError(
           `Provider '${input.provider}' does not support verifyPayment`,
           "METHOD_NOT_SUPPORTED",
           input.provider
@@ -73,7 +73,7 @@ export function createBarayPay(config: BarayPayConfig): BarayPayClient {
     async generateKHQR(input) {
       const provider = getProvider(input.provider);
       if (!provider.generateKHQR) {
-        throw new BarayPayError(
+        throw new RielPayError(
           `Provider '${input.provider}' does not support generateKHQR`,
           "METHOD_NOT_SUPPORTED",
           input.provider
@@ -85,7 +85,7 @@ export function createBarayPay(config: BarayPayConfig): BarayPayClient {
     async webhookHandler(input) {
       const provider = getProvider(input.provider);
       if (!provider.webhookHandler) {
-        throw new BarayPayError(
+        throw new RielPayError(
           `Provider '${input.provider}' does not support webhookHandler`,
           "METHOD_NOT_SUPPORTED",
           input.provider

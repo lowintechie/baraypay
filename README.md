@@ -1,10 +1,10 @@
-# baraypay
+# rielpay
 
 Unified TypeScript SDK for Cambodian payments.
 
 ## About
 
-baraypay is an open-source Node.js + TypeScript SDK that gives developers one clean API for Cambodian payments.
+rielpay is an open-source Node.js + TypeScript SDK that gives developers one clean API for Cambodian payments.
 Instead of handling different provider APIs one by one, you integrate once and plug in providers like ABA PayWay and Bakong KHQR.
 
 It is designed for production backend environments and framework flexibility, with first-class support for:
@@ -18,20 +18,20 @@ Supported providers:
 - Bakong KHQR
 
 Repository:
-- https://github.com/lowintechie/baraypay
+- https://github.com/lowintechie/rielpay
 
 ## Installation
 
 ```bash
-npm install baraypay
+npm install rielpay
 ```
 
 ## Quick Start
 
 ```ts
-import { createBarayPay, abaPayway, bakongKHQR } from "baraypay";
+import { createRielPay, abaPayway, bakongKHQR } from "rielpay";
 
-const baraypay = createBarayPay({
+const rielpay = createRielPay({
   providers: [
     abaPayway({
       merchantId: process.env.ABA_MERCHANT_ID!,
@@ -40,12 +40,12 @@ const baraypay = createBarayPay({
     }),
     bakongKHQR({
       merchantId: process.env.BAKONG_MERCHANT_ID!,
-      merchantName: "baraypay Demo Merchant"
+      merchantName: "RielPay Demo Merchant"
     })
   ]
 });
 
-const payment = await baraypay.createPayment({
+const payment = await rielpay.createPayment({
   provider: "aba",
   amount: 10,
   currency: "USD",
@@ -87,9 +87,9 @@ Contributions are welcome.
 
 If you want separate provider packages, you can use:
 
-- `@baraypay/sdk`
-- `@baraypay/abapayway`
-- `@baraypay/bakong`
+- `@rielpay/sdk`
+- `@rielpay/abapayway`
+- `@rielpay/bakong`
 
 ## Roadmap
 

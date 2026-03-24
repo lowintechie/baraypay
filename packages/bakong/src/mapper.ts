@@ -1,4 +1,4 @@
-import type { PaymentStatus } from "@baraypay/sdk";
+import type { PaymentStatus } from "@rielpay/sdk";
 
 export function normalizeBakongStatus(status?: string): PaymentStatus {
   const value = (status ?? "pending").toLowerCase();
